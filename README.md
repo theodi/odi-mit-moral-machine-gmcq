@@ -12,7 +12,7 @@ To play the game, the user must click either one of the two images and then subm
 
 ## Installation
 
-[Click here](https://github.com/jschof1/moralMachine/archive/refs/heads/master.zip) to download the folder which you will be importing. Once this has been downloaded you can either: 
+[Click here](https://github.com/jschof1/odi-mit-moral-machine-gmcq/archive/refs/heads/main.zip) to download the folder which you will be importing. Once this has been downloaded you can either: 
 
 ##### Install the plugin via your Adapt Authoring tool
 
