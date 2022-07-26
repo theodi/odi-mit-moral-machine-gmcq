@@ -19,6 +19,8 @@ export default function Gmcq(props) {
     instruction,
     onKeyPress,
     onItemSelect,
+    onItemFocus,
+    onItemBlur,
     isInteractive
   } = props;
 
@@ -39,7 +41,7 @@ export default function Gmcq(props) {
           _isCorrect && 'is-correct',
           _columns && screenSize === 'large' && 'has-column-layout'
         ])}
-        role={'radiogroup'}
+        role={_isRadio ? 'radiogroup' : 'group'}
         aria-labelledby={(displayTitle || body || instruction) && `${_id}-header`}
       >
 
@@ -54,7 +56,6 @@ export default function Gmcq(props) {
             style={(_columns && screenSize === 'large') ?
               { width: `${100 / _columns}%` } :
               null}
-              i want 
             key={_index}
           >
 
@@ -62,11 +63,16 @@ export default function Gmcq(props) {
               className='gmcq__item-input'
               id={`${_id}-${index}-input`}
               name={_isRadio ? `${_id}-item` : null}
-              type={'radio'}
+              type={_isRadio ? 'radio' : 'checkbox'}
               disabled={!_isEnabled}
+              aria-label={!shouldShowMarking ?
+                `${Adapt.a11y.normalize(text)} ${_graphic?.alt || ''}` :
+                `${_shouldBeSelected ? ariaLabels.correct : ariaLabels.incorrect}, ${_isActive ? ariaLabels.selectedAnswer : ariaLabels.unselectedAnswer}. ${Adapt.a11y.normalize(text)} ${_graphic?.alt || ''}`}
               data-adapt-index={_index}
               onKeyPress={onKeyPress}
               onChange={onItemSelect}
+              onFocus={onItemFocus}
+              onBlur={onItemBlur}
             />
 
             <label
@@ -93,7 +99,7 @@ export default function Gmcq(props) {
                     className={classes([
                       'gmcq__item-icon',
                       'gmcq__item-answer-icon',
-                      'is-radio'
+                      _isRadio ? 'is-radio' : 'is-checkbox'
                     ])}
                   >
 
