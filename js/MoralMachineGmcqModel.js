@@ -4,4 +4,5 @@ export default class MoralMachineGmcqModel extends McqModel {
 	isCorrect() {
 		return true;
 	}
+	
 }
