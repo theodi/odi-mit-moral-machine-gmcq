@@ -1,781 +1,130 @@
-# odi-mit-moral-machine-gmcq
+# adapt-contrib-gmcq  
 
-**odi-mit-moral-machine-gmcq** is a *question component* based on the **Graphical Multiple Choice Question (GMCQ)** which is bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework). 
+**Graphical Multiple Choice Question (GMCQ)** is a *question component* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework). 
 
-The Moral Machine Component is a question component built for the [Adapt framework](https://github.com/adaptlearning/adapt_framework). This component extends the [MCQ component](https://github.com/adaptlearning/adapt-contrib-mcq) and includes some of the functionalities found in the [GMCQ component](https://github.com/adaptlearning/adapt-contrib-gmcq).
+<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/gmcq01.gif" alt="graphical multiple choice question in action" >  
 
-This component is based on MIT's [Moral Machine](https://www.moralmachine.net/) game. This game looks at moral choices that driverless cars will be forced make. In this game, you will have to decide what the driverless will do.
+It presents possible answers in the form of graphics or images. **GMCQ** is a variation on [**MCQ**](https://github.com/adaptlearning/mcq/wiki). It can be configured with a single correct answer or multiple correct answers. Upon submission, feedback is provided via the [**Tutor** extension](https://github.com/adaptlearning/adapt-contrib-tutor), if installed. Feedback can be provided for correct, incorrect and partially correct answers. The number of attempts allowed may be configured.
 
-The game presents the user with a set of scenerios. In both cases there will be fatalities. The user must decide who the victims are.
-
-To play the game, the user must click either one of the two images and then submit their decision by clicking the submit button.
+[Visit the **GMCQ** wiki](https://github.com/adaptlearning/adapt-contrib-gmcq/wiki) for more information about its functionality and for explanations of key properties. 
 
 ## Installation
 
-[Click here](https://github.com/jschof1/odi-mit-moral-machine-gmcq/archive/refs/heads/main.zip) to download the folder which you will be importing. Once this has been downloaded you can either: 
+As one of Adapt's *[core components](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#components),* **GMCQ** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
 
-##### Install the plugin via your Adapt Authoring tool
+* If **GMCQ** has been uninstalled from the Adapt framework, it may be reinstalled.
+With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:  
+`adapt install adapt-contrib-gmcq`
 
-Click on the top left hand corner drop-down and select *Plugin Management*. Then click the *Upload Plugin* button. Now, drop the zip file you just donwloaded from the link above and drop it onto the *Choose file* button.
+    Alternatively, this component can also be installed by adding the following line of code to the *adapt.json* file:  
+    `"adapt-contrib-gmcq": "*"`  
+    Then running the command:  
+    `adapt install`  
+    (This second method will reinstall all plug-ins listed in *adapt.json*.)  
 
-<video width="320" height="240" controls>
-  <source src="https://streamable.com/e/ylc1ua" type="video/mp4">
-</video>
+* If **GMCQ** has been uninstalled from the Adapt authoring tool, it may be reinstalled using the [Plug-in Manager](https://github.com/adaptlearning/adapt_authoring/wiki/Plugin-Manager).
 
+## Settings Overview
 
-##### Install the plugin via your OS's file manager
+The attributes listed below are used in *components.json* to configure **GMCQ**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-gmcq/blob/master/example.json). Visit the [**GMCQ** wiki](gmcq/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki). 
 
-Unzip the downloaded file. Then, in your course folder navigate to the componets folder and drag the the unzipped folder into it.
+<div float align=right><a href="#top">Back to Top</a></div>
 
+### Attributes
 
-## Settings overview
+In addition to the attributes specifically listed below, [*question components*](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#question-components) can implement the following sets of attributes:   
++ [**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. They have no default values. Like the attributes below, their values are assigned in *components.json*. 
++ [**core buttons**](https://github.com/adaptlearning/adapt_framework/wiki/Core-Buttons): Default values are found in *course.json*, but may be overridden by **GMCQ's** model in *components.json*.
 
-Each component should come with an example.json which contains an example of the data structure needed for this component to work. This enables developers to copy this over without the need for an editor.
+**\_component** (string): This value must be: `gmcq`.
 
-Developers should give some description for data expected for their component and what the setting does. The example.json file for a basic component would contain at least the following:
+**\_classes** (string): CSS class name to be applied to **GMCQ**’s containing `div`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
-```
-{
-   "_id":"c-05",
-   "_parentId":"b-05",
-   "_type":"component",
-   "_component":"blank",
-   "_classes":"",
-   "_isOptional":true,
-   "_items":[
-      {
-         "id":"122352322342",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/1-l.png",
-            "_shouldBeSelected":false,
-            "description":"Drive through a pedestrian crossing ahead. This will result in killing one male adult and saving one male adult",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":[
-                     "Save people in car",
-                     "Intervene"
-                  ]
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/1-r.png",
-            "_shouldBeSelected":false,
-            "description":"Swerve and crash into a concrete barrier. This will result in killing one male adult and saving one male adult",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":[
-                     "Save pedestrians",
-                     "Avoid Intervention"
-                  ]
-               }
-            ]
-         }
-      },
-      {
-         "id":"323423",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/2-l.png",
-            "_shouldBeSelected":false,
-            "description":"Kill one female adult and child and a male adult. Save a female (professional)",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Female (child)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save professionals"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/2-r.png",
-            "_shouldBeSelected":false,
-            "description":"Save one female adult and child and a male. Save a female (professional)",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Baby",
-                  "number":1
-               },
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Female (adult)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save more people"
-               },
-               {
-                  "choices":"Save young"
-               },
-               {
-                  "choices":"Save people in car"
-               }
-            ]
-         }
-      },
-      {
-         "id":"122352322342",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/3-l.png",
-            "_shouldBeSelected":false,
-            "description":"Drive through a pedestrian crossing ahead will result in killing, one male, one female adult and one male child but saving one female (professional)",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Female",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (professional)",
-                  "number":1
-               },
-               {
-                  "character":"Male (child)",
-                  "number":1
-               },
-               {
-                  "character":"Male (man)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save people in car"
-               },
-               {
-                  "choices":"Save old"
-               },
-               {
-                  "choices":"Avoid intervention"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/3-r.png",
-            "_shouldBeSelected":false,
-            "description":"Swerving and crashing into the concrete barrier will result in killing a female (professional) and killing one male adult, male child and female adult",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save young"
-               },
-               {
-                  "choices":"Save more lives"
-               }
-            ]
-         }
-      },
-      {
-         "id":"323423",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/4-l.png",
-            "_shouldBeSelected":false,
-            "description":"Drive straight to kill a female and male jogger (adult) but save the elderly male and female",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (old)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (jogger)",
-                  "number":1
-               },
-               {
-                  "character":"Female (jogger)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save old"
-               },
-               {
-                  "choices":"Avoid Intervention"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/4-r.png",
-            "_shouldBeSelected":false,
-            "description":"Swerve to kill and elderly male and female and save a male and a female jogger.",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Male (jogger)",
-                  "number":1
-               },
-               {
-                  "character":"Female (jogger)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (old)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Avoid Intervention"
-               }
-            ]
-         }
-      },
-      {
-         "id":"122352322342",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/5-l.png",
-            "_shouldBeSelected":false,
-            "description":"Going straight will result in the death of one female child and a cat but saving an elderly male and female:",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (old)",
-                  "number":1
-               },
-               {
-                  "character":"female (old)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (child)",
-                  "number":1
-               },
-               {
-                  "character":"Pet (cat)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save old"
-               },
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save humans"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/5-r.png",
-            "_shouldBeSelected":false,
-            "description":"This will result in saving one female child and cat but killing an elderly male and female",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Female (child)",
-                  "number":1
-               },
-               {
-                  "character":"Male (child)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (old)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save young"
-               },
-               {
-                  "choices":"Save pets"
-               }
-            ]
-         }
-      },
-      {
-         "id":"323423",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/6-l.png",
-            "_shouldBeSelected":false,
-            "description":"Direct the autonomous car to do nothing, killing a robber and a young girl",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               },
-               {
-                  "character":"Female (child)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save professionals"
-               },
-               {
-                  "choices":"Save old"
-               },
-               {
-                  "choices":"Uphold Law"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/6-r.png",
-            "_shouldBeSelected":false,
-            "description":"Make the car swerve, killing a male doctor and elderly woman.",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               },
-               {
-                  "character":"Female (child)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save young"
-               },
-               {
-                  "choices":""
-               }
-            ]
-         }
-      },
-      {
-         "id":"122352322342",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/7-l.png",
-            "_shouldBeSelected":false,
-            "description":"Drive through a pedestrian crossing ahead. This will result in:",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save female"
-               },
-               {
-                  "choices":"Avoid Intervention"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/7-r.png",
-            "_shouldBeSelected":false,
-            "description":"Swerve and crash into a concrete barrier. This will result in",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save male"
-               }
-            ]
-         }
-      },
-      {
-         "id":"323423",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/8-l.png",
-            "_shouldBeSelected":false,
-            "description":"3 Click on either picture to submit your choice.",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save professionals"
-               },
-               {
-                  "choices":"Uphold law"
-               },
-               {
-                  "choices":"Save people in car"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/8-r.png",
-            "_shouldBeSelected":false,
-            "description":"4 Click on either picture to submit your choice.",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save more people"
-               },
-               {
-                  "choices":"Save young"
-               }
-            ]
-         }
-      },
-      {
-         "id":"122352322342",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/9-l.png",
-            "_shouldBeSelected":false,
-            "description":"Drive through a pedestrian crossing ahead. This will result in:",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               },
-               {
-                  "character":"Pet (dog)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               },
-               {
-                  "character":"Pet (dog)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save more people"
-               },
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save Humans"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/9-r.png",
-            "_shouldBeSelected":false,
-            "description":"Swerve and crash into a concrete barrier. This will result in",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Female (professional e.g. doctor))",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Male (Robber)",
-                  "number":1
-               },
-               {
-                  "character":"Pet (dog)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Uphold Law"
-               },
-               {
-                  "choices":"Save Pets"
-               }
-            ]
-         }
-      },
-      {
-         "id":"323423",
-         "scenario-left":{
-            "_graphic":"course/en/assets/scenarios/10-l.png",
-            "_shouldBeSelected":false,
-            "description":"3 Click on either picture to submit your choice.",
-            "direction":"go straight",
-            "saved characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Female (pregnant)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               },
-               {
-                  "character":"Male (old)",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Female (child)",
-                  "number":1
-               },
-               {
-                  "character":"Male (child)",
-                  "number":1
-               },
-               {
-                  "character":"Baby",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Avoid Intervention"
-               },
-               {
-                  "choices":"Save old"
-               }
-            ]
-         },
-         "scenario-right":{
-            "_graphic":"course/en/assets/scenarios/10-r.png",
-            "_shouldBeSelected":false,
-            "description":"4 Click on either picture to submit your choice.",
-            "direction":"swerve",
-            "saved characters":[
-               {
-                  "character":"Female (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Male (adult)",
-                  "number":1
-               },
-               {
-                  "character":"Female (child)",
-                  "number":1
-               },
-               {
-                  "character":"Male (child)",
-                  "number":1
-               },
-               {
-                  "character":"Baby",
-                  "number":1
-               }
-            ],
-            "killed characters":[
-               {
-                  "character":"Female (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Male (professional e.g. doctor)",
-                  "number":1
-               },
-               {
-                  "character":"Female (pregnant)",
-                  "number":1
-               },
-               {
-                  "character":"Female (old)",
-                  "number":1
-               },
-               {
-                  "character":"Male (old)",
-                  "number":1
-               }
-            ],
-            "scoring":[
-               {
-                  "choices":"Save more people"
-               },
-               {
-                  "choices":"Save young"
-               }
-            ]
-         }
-      }
-   ]
-}
-```
-A description of the core settings can be found at: [Core model attributes](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes)
+**\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.  
 
+**instruction** (string): This optional text appears above the component. It is frequently used to
+guide the learner’s interaction with the component.  
 
-### Data description
+**\_attempts** (integer): This specifies the number of times a learner is allowed to submit an answer. The default is `1`.
 
- `_graphic` displays what characters will be shown in the scenario.
- 
- `_description` is where you describe the concequences of the action.
- 
- `direction` allows you to choose whether the driverless car decides to go straight or swerve.
- 
- `saved characters` inputs what characters are saved.
- 
- `killed charecters` inputs what characters are killed.
- 
- `scoring` outputs the users final choices.
- 
+**\_shouldDisplayAttempts** (boolean): Determines whether or not the text set in **remainingAttemptText** and **remainingAttemptsText** will be displayed. These two attributes are part of the [core buttons](https://github.com/adaptlearning/adapt_framework/wiki/Core-Buttons) attribute group. The default is `false`.  
+
+**\_hasItemScoring** (boolean): When `false`, this question scores 0 for incorrect and `_questionWeight` for correct. When `true`, this question scores by summing the `_score` of the selected items.  
+
+**\_questionWeight** (number): When `_hasItemScoring` is `false`, this is the question score for a correct response. This number is used in calculations of the final score reported to the LMS.  
+
+**\_isRandom** (boolean): Setting this value to `true` will cause the **\_items** to appear in a random order each time the component is loaded. The default is `false`.  
+
+**\_selectable** (number): Defines the number of **\_items**, or answers, that can be selected. If the value of **\_selectable** is `1`, **\_items** will be presented with HTML radio buttons. If the value is greater than `1`, they will be presented with HTML checkboxes. This number must match or exceed the number of **\_items** whose **_shouldBeSelected** is set to `true`. The default is `1`.
+
+**\_canShowModelAnswer** (boolean): Setting this to `false` prevents the [**\_showCorrectAnswer** button](https://github.com/adaptlearning/adapt_framework/wiki/Core-Buttons) from being displayed. The default is `true`.
+
+**\_canShowFeedback** (boolean): Setting this to `false` disables feedback, so it is not shown to the user. The default is `true`.
+
+**\_canShowMarking** (boolean): Setting this to `false` prevents ticks and crosses being displayed on question completion. The default is `true`.
+
+**\_recordInteraction** (boolean) Determines whether or not the learner's answers will be recorded to the LMS via cmi.interactions. Default is `true`. For further information, see the entry for `_shouldRecordInteractions` in the README for [adapt-contrib-spoor](https://github.com/adaptlearning/adapt-contrib-spoor).
+
+**\_columns** (number): Defines the number of columns wide the **\_items** are displayed in. If the value of **\_numberOfColumns** is `2`, each **\_items** will be 50% wide. Similarly, if the value of **\_numberOfColumns** is `3`, each **\_items** will be 33.3% wide. In mobile view, the width of each **\_items** is 100%.
+
+**\_items** (array): Each *item* represents one choice for the multiple choice question and contains values for **text**, **\_shouldBeSelected**, **feedback**, and **\_graphic**.  
+
+>**text** (string): Optional text that is displayed as part of the multiple choice option.  
+
+>**\_shouldBeSelected** (boolean): Value can be `true` or `false`. Use `true` for items that must be selected for a correct answer. The value of **\_selectable** must correspond to the number of **\_items** where **\_shouldBeSelected** is set to `true`. 
+
+>**feedback** (string): This attribute is used only when the value for **\_selectable** is set to `1` (i.e., radio button style questions). This text will be shown if the learner selects this item, and it is an incorrect answer. 
+
+>**\_graphic** (object): The image that appears as a possible answer. It contains values for **large**, **small**, **alt**, and **title**. 
+
+>>**large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-two.jpg*).  
+
+>>**small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-two.jpg*).
+
+>>**alt** (string): The alternative text for this image. Assign [alt text](https://github.com/adaptlearning/adapt_framework/wiki/Providing-good-alt-text) to images that convey course content only. Avoid duplication if the item **text** already provides context and leave blank.
+
+>>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed below the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
+
+>**\_score** (number): If `_hasItemScoring` is `true`, when selected, item scores are summed to give the question score.  
+
+**\_feedback** (object): If the [**Tutor** extension](https://github.com/adaptlearning/adapt-contrib-tutor) is enabled, these various texts will be displayed depending on the submitted answer. **\_feedback**
+contains values for three types of answers: **correct**, **\_incorrect**, and **\_partlyCorrect**. Some attributes are optional. If they are not supplied, the default that is noted below will be used.
+
+>**title** (string): If not set, the component's **displayTitle** is used as the feedback title. If **displayTitle** is not set , **title** will be used instead.
+
+>**correct** (string): Text that will be displayed when the submitted answer is correct.  
+
+>**\_incorrect** (object): Texts that will be displayed when the submitted answer is incorrect. It contains values that are displayed under differing conditions: **final** and **notFinal**. 
+
+>>**final** (string): Text that will be displayed when the submitted answer is incorrect and no more attempts are permitted. 
+
+>>**notFinal** (string): Text that will be displayed when the submitted answer is incorrect while more attempts are permitted. This is optional&mdash;if you do not supply it, the **\_incorrect.final** feedback will be shown instead. 
+
+>**\_partlyCorrect** (object): Texts that will be displayed when the submitted answer is partially correct. It contains values that are displayed under differing conditions: **final** and **notFinal**.  
+
+>>**final** (string): Text that will be displayed when the submitted answer is partly correct and no more attempts are permitted. This is optional&mdash;if you do not supply it, the **\_incorrect.final** feedback will be shown instead.  
+
+>>**notFinal** (string): Text that will be displayed when the submitted answer is partly correct while more attempts are permitted. This is optional&mdash;if you do not supply it, the **\_incorrect.notFinal** feedback will be shown instead.  
+
+### Notes
+If you don't need this component to display a different image for large/small screen sizes, you can use **src** (instead of **large** and **small**) to specify an image that will be displayed for all screen sizes.  
+
+## Accessibility
+**Graphical Multiple Choice Question** has been assigned a descriptive label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**.  
+
+When **Graphical Multiple Choice Question** is used with Adapt Framework v5.12.0 (or better), it supports announcing the correct/learner answer to screen readers (via an an [ARIA Live Region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)) when the Correct Answer button is toggled by the learner. The following attributes are used to provide this functionality: **ariaCorrectAnswer**, **ariaCorrectAnswers**, **ariaUserAnswer**, **ariaUserAnswers**.
+
+These ARIA labels are not visible elements; they are used by assistive technology (such as screen readers). Should any of these labels need to be customised or translated, they can be found within the `_globals._components._gmcq` object in **course.json** (or Project settings > Globals in the Adapt Authoring Tool).  
+<div float align=right><a href="#top">Back to Top</a></div>
+
+## Limitations
+
+No known limitations.
+
+----------------------------
+**Version number:**  6.0.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
+**Framework versions:** 5.14.0+  
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-gmcq/graphs/contributors)  
+**Accessibility support:** WAI AA  
+**RTL support:** Yes  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera  
