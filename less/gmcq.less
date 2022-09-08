@@ -8,6 +8,7 @@
   &__item {
     position: relative;
     width: 50%;
+    padding: 1em;
   }
 
   &__item-input {
@@ -43,19 +44,19 @@
   }
 
   &__item-label.is-selected &__item-answer-icon.is-radio .icon {
-    .icon-radio-checked;
+    .icon-arrow-with-circle-up;
   }
 
   &__item-label.is-selected &__item-answer-icon.is-checkbox .icon {
-    .icon-checkbox-checked;
+    .icon-arrow-with-circle-up;
   }
 
   &__item-correct-icon .icon {
-    .icon-tick;
+    .icon-arrow-with-circle-up;
   }
 
   &__item-incorrect-icon .icon {
-    .icon-cross;
+    .icon-arrow-with-circle-up;
   }
 
   // Class to show the selection icons until the component is complete
@@ -84,5 +85,54 @@
 
   &__widget.show-correct-answer &__item:not(.is-correct):not(.is-incorrect) .is-selected &__item-answer-icon {
     display: block;
+  }
+  
+  // From Vanilla
+  &__item-label {
+    margin: @item-margin;
+  }
+
+  // Layout #1
+  // --------------------------------------------------
+  &__item-option {
+    margin-top: @item-margin;
+    padding: @item-padding / 2;
+    background-color: @item-color;
+    color: @item-color-inverted;
+    border-radius: @item-border-radius;
+  }
+
+  .no-touch &__item-label:not(.is-disabled):not(.is-selected):hover .gmcq__item-option,
+  html:not(.a11y-disable-focusoutline) .gmcq__item-input:focus + &__item-label &__item-option {
+    background-color: @item-color-hover;
+    color: @item-color-inverted-hover;
+    .transition(background-color @duration ease-in, color @duration ease-in;);
+  }
+
+  &__item-label.is-disabled .gmcq__item-option {
+    background-color: @disabled;
+    color: @disabled-inverted;
+  }
+
+  &__item-label.is-selected .gmcq__item-option {
+    background-color: @item-color-selected;
+    color: @item-color-inverted-selected;
+  }
+
+  &__item-state {
+    min-height: @icon-size;
+  }
+
+  &__item-text {
+    margin-top: @item-margin;
+    text-align: center;
+  }
+}
+.smaller-gmcq {
+  .gmcq__item__image {
+    max-width: 80%;
+    min-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

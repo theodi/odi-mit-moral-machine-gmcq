@@ -155,12 +155,14 @@
                   "type": "string",
                   "required": false,
                   "enum": [
+                    "Female (retired)",
                     "Female (adult)",
                     "Female (professional e.g. doctor)",
                     "Female (child)",
+                    "Male (retired)",
                     "Male (adult)",
                     "Male (professional e.g. doctor)",
-                    "Female (child)",
+                    "Male (child)",
                     "Baby",
                     "Robber",
                     "Pet (dog)",
@@ -171,12 +173,14 @@
                   "inputType": {
                     "type": "Select",
                     "options": [
+                      "Female (retired)",
                       "Female (adult)",
                       "Female (professional e.g. doctor)",
                       "Female (child)",
+                      "Male (retired)",
                       "Male (adult)",
                       "Male (professional e.g. doctor)",
-                      "Female (child)",
+                      "Male (child)",
                       "Baby",
                       "Robber",
                       "Pet (dog)",
@@ -190,7 +194,7 @@
                   "type": "number",
                   "required": true,
                   "default": 1,
-                  "title": "number saved",
+                  "title": "Number saved",
                   "inputType": "Number",
                   "validators": [
                     "required",
@@ -213,12 +217,14 @@
                   "type": "string",
                   "required": false,
                   "enum": [
+                    "Female (retired)",
                     "Female (adult)",
                     "Female (professional e.g. doctor)",
                     "Female (child)",
+                    "Male (retired)",
                     "Male (adult)",
                     "Male (professional e.g. doctor)",
-                    "Female (child)",
+                    "Male (child)",
                     "Baby",
                     "Robber",
                     "Pet (dog)",
@@ -229,12 +235,14 @@
                   "inputType": {
                     "type": "Select",
                     "options": [
+                      "Female (retired)",
                       "Female (adult)",
                       "Female (professional e.g. doctor)",
                       "Female (child)",
+                      "Male (retired)",
                       "Male (adult)",
                       "Male (professional e.g. doctor)",
-                      "Female (child)",
+                      "Male (child)",
                       "Baby",
                       "Robber",
                       "Pet (dog)",
@@ -248,7 +256,7 @@
                   "type": "number",
                   "required": true,
                   "default": 1,
-                  "title": "number saved",
+                  "title": "Number killed",
                   "inputType": "Number",
                   "validators": [
                     "required",
@@ -274,11 +282,8 @@
                     "Avoid Intervention",
                     "Save people in car",
                     "Save old",
-                    "Save young",
                     "Save more people",
-                    "Save humans",
                     "Save pets",
-                    "Save professionals",
                     "Save robbers",
                     "Uphold law"
                   ],
@@ -290,11 +295,8 @@
                       "Avoid Intervention",
                       "Save people in car",
                       "Save old",
-                      "Save young",
                       "Save more people",
-                      "Save humans",
                       "Save pets",
-                      "Save professionals",
                       "Save robbers",
                       "Uphold law"
                     ]
@@ -362,64 +364,14 @@
       "validators": ["required", "number"],
       "help": "How many attempts the learner is allowed"
     },
-    "_canShowModelAnswer": {
-      "type": "boolean",
-      "required": true,
-      "default": true,
-      "title": "Display Model Answer",
-      "inputType": "Checkbox",
-      "validators": [],
-      "help": "Allow the user to view the 'model answer' if they answer the question incorrectly?"
-    },
-    "_canShowFeedback": {
-      "type": "boolean",
-      "required": true,
-      "default": true,
-      "title": "Display Feedback",
-      "inputType": "Checkbox",
-      "validators": []
-    },
-    "_canShowMarking": {
-      "type": "boolean",
-      "default": true,
-      "title": "Display Marking",
-      "inputType": "Checkbox",
-      "validators": []
-    },
-    "_shouldDisplayAttempts": {
-      "type": "boolean",
-      "required": false,
-      "default": false,
-      "title": "Display Attempts",
-      "inputType": "Checkbox",
-      "validators": [],
-      "help": "Display the number of attempts remaining?"
-    },
     "_isRandom": {
       "type": "boolean",
       "required": false,
       "default": false,
-      "title": "Randomise answers",
-      "inputType": "Checkbox",
-      "validators": []
-    },
-    "_hasItemScoring": {
-      "type": "boolean",
-      "required": false,
-      "default": false,
-      "title": "Enable item scoring",
+      "title": "Randomise items",
       "inputType": "Checkbox",
       "validators": [],
-      "help": "When disabled, this question scores 0 for incorrect and 'Question Weight' for correct. When enabled, this question scores by summing the scores of the selected options."
-    },
-    "_questionWeight": {
-      "type": "number",
-      "required": false,
-      "default": 1,
-      "title": "Question Weight",
-      "inputType": "Number",
-      "validators": ["number"],
-      "help": "When item scoring is disabled, this is the question score for a correct response."
+      "help": "If enabled, items are displayed in random order."
     },
     "_recordInteraction": {
       "type": "boolean",
@@ -430,15 +382,6 @@
       "validators": [],
       "help": "If disabled, recording the user's answer(s) to this question to cmi.interactions on the LMS will be disabled for this component only."
     },
-    "_columns": {
-      "type": "number",
-      "required": false,
-      "default": 0,
-      "title": "Columns",
-      "inputType": "Number",
-      "validators": ["number"],
-      "help": "Set the number of columns. If value is '0', component uses the default layout."
-    },
     "_selectable": {
       "type": "number",
       "required": true,
@@ -447,86 +390,6 @@
       "inputType": "Number",
       "validators": ["number", "required"],
       "help": "How many items are selectable"
-    },
-    "_feedback": {
-      "type": "object",
-      "required": false,
-      "title": "Feedback",
-      "properties": {
-        "title": {
-          "type": "string",
-          "required": false,
-          "default": "",
-          "title": "Feedback Title",
-          "inputType": "Text",
-          "validators": [],
-          "help": "Leave blank to have the component's title shown instead.",
-          "translatable": true
-        },
-        "correct": {
-          "type": "string",
-          "required": false,
-          "default": "",
-          "title": "Correct",
-          "inputType": "TextArea",
-          "validators": [],
-          "help": "Correct answer feedback for this question",
-          "translatable": true
-        },
-        "_incorrect": {
-          "type": "object",
-          "required": false,
-          "title": "Incorrect Feedback",
-          "properties": {
-            "final": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "Incorrect Final",
-              "inputType": "TextArea",
-              "validators": [],
-              "help": "Incorrect answer feedback for the final attempt",
-              "translatable": true
-            },
-            "notFinal": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "Incorrect Not Final",
-              "inputType": "TextArea",
-              "validators": [],
-              "help": "Incorrect answer feedback for any attempt apart from the last attempt. If you leave this blank, the 'Incorrect Final' feedback will be used instead.",
-              "translatable": true
-            }
-          }
-        },
-        "_partlyCorrect": {
-          "type": "object",
-          "required": false,
-          "properties": {
-            "final": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "Partly Correct Final",
-              "inputType": "TextArea",
-              "validators": [],
-              "help": "Partly correct answer feedback for the final attempt. If you leave this blank, the 'Incorrect Final' feedback will be used instead.",
-              "translatable": true
-            },
-            "notFinal": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "Partly Correct Not Final",
-              "inputType": "TextArea",
-              "validators": [],
-              "help": "Partly correct answer feedback for any attempt apart from the last attempt. If you leave this blank, the 'Partly Correct Final' feedback will be used instead.",
-              "translatable": true
-            }
-          }
-        }
-      }
     },
     "_buttons": {
       "type": "object",
@@ -561,16 +424,16 @@
         },
         "_reset": {
           "type": "object",
-          "title": "Reset",
+          "title": "Complete",
           "properties": {
             "buttonText": {
               "type": "string",
               "required": false,
               "default": "",
-              "title": "",
+              "title": "Text",
               "inputType": "QuestionButton",
               "validators": [],
-              "help": "Button label text for the reset button",
+              "help": "Text to display in the button area after a choice has been made",
               "translatable": true
             },
             "ariaLabel": {
@@ -580,108 +443,10 @@
               "title": "",
               "inputType": "QuestionButton",
               "validators": [],
-              "help": "Aria label for the reset button",
+              "help": "Aria label for the complet text",
               "translatable": true
             }
           }
-        },
-        "_showCorrectAnswer": {
-          "type": "object",
-          "title": "Show Correct Answer",
-          "properties": {
-            "buttonText": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Button label text to show the model answer",
-              "translatable": true
-            },
-            "ariaLabel": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Aria label for the show model answer button",
-              "translatable": true
-            }
-          }
-        },
-        "_hideCorrectAnswer": {
-          "type": "object",
-          "title": "Hide Correct Answer",
-          "properties": {
-            "buttonText": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Button label text to hide the model answer",
-              "translatable": true
-            },
-            "ariaLabel": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Aria label for the hide model answer button",
-              "translatable": true
-            }
-          }
-        },
-        "_showFeedback": {
-          "type": "object",
-          "title": "Show Feedback",
-          "properties": {
-            "buttonText": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Button label text to show feedback",
-              "translatable": true
-            },
-            "ariaLabel": {
-              "type": "string",
-              "required": false,
-              "default": "",
-              "title": "",
-              "inputType": "QuestionButton",
-              "validators": [],
-              "help": "Aria label for the show feedback button",
-              "translatable": true
-            }
-          }
-        },
-        "remainingAttemptsText": {
-          "type": "string",
-          "required": false,
-          "default": "",
-          "title": "Attempts Remaining Text",
-          "inputType": "QuestionButton",
-          "validators": [],
-          "help": "Shown when there are multiple attempts left",
-          "translatable": true
-        },
-        "remainingAttemptText": {
-          "type": "string",
-          "required": false,
-          "default": "",
-          "title": "Final Attempt Text",
-          "inputType": "QuestionButton",
-          "validators": [],
-          "help": "Shown when there is one attempt left",
-          "translatable": true
         }
       }
     }
