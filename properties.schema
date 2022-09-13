@@ -125,6 +125,16 @@
               }
             }
           },
+          "text": {
+            "type": "string",
+            "required": true,
+            "default": "",
+            "title": "Item Text",
+            "inputType": "Text",
+            "validators": [],
+            "help": "Text that will be displayed with the image",
+            "translatable": true
+          },
           "direction": {
             "type": "string",
             "required": true,
@@ -308,51 +318,6 @@
             }
           }
         }
-      },
-      "text": {
-        "type": "string",
-        "required": false,
-        "default": "",
-        "title": "Item Text",
-        "inputType": "Text",
-        "validators": [],
-        "help": "Text that will be displayed with the image",
-        "translatable": true
-      },
-      "_shouldBeSelected": {
-        "type": "boolean",
-        "required": true,
-        "default": false,
-        "title": "Correct answer?",
-        "inputType": "Checkbox",
-        "validators": []
-      },
-      "_isPartlyCorrect": {
-        "type": "boolean",
-        "required": true,
-        "default": false,
-        "title": "Is only partly correct?",
-        "inputType": "Checkbox",
-        "validators": []
-      },
-      "feedback": {
-        "type": "string",
-        "required": false,
-        "default": "",
-        "title": "Answer-specific feedback",
-        "inputType": "Text",
-        "validators": [],
-        "help": "When 'Selectable Items' is set to 1, this can be used to give the user feedback specific to the answer they selected - if incorrect.",
-        "translatable": true
-      },
-      "_score": {
-        "type": "number",
-        "required": false,
-        "default": 0,
-        "title": "Score",
-        "inputType": "Number",
-        "validators": ["required", "number"],
-        "help": "If item scoring is enabled, when selected, item scores are summed to give the question score."
       }
     },
     "_attempts": {
