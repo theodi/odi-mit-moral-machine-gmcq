@@ -1,4 +1,4 @@
-# odi-mit-moral-machine-gmcq
+# odi-moralMachine-gmcq
 
 Component based upon the **Graphical Multiple Choice Question (GMCQ)** component. For notes in installation plese see the Installation instructions for the GMCQ component. 
 
