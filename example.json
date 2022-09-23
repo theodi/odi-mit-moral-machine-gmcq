@@ -1,85 +1,187 @@
-    {
-        "_id": "c-05",
-        "_parentId": "b-05",
-        "_type": "component",
-        "_component": "gmcq",
-        "_classes": "",
-        "_layout": "full",
-        "title": "GMCQ",
-        "displayTitle": "GMCQ",
-        "body": "Which of the following options would you consider to be correct?",
-        "instruction": "",
-        "_attempts": 1,
-        "_shouldDisplayAttempts": false,
-        "_hasItemScoring": false,
-        "_questionWeight": 1,
-        "_isRandom": false,
-        "_selectable": 1,
-        "_canShowModelAnswer": true,
-        "_canShowFeedback": true,
-        "_canShowMarking": true,
-        "_recordInteraction": true,
-        "_columns": 3,
-        "_items": [
-            {
-                "text": "This is option 1.",
-                "_shouldBeSelected": true,
-                "_graphic": {
-                    "alt": "",
-                    "attribution": "Copyright © 2019",
-                    "large": "course/en/images/gqcq-1-large.gif",
-                    "small": "course/en/images/gqcq-1-small.gif"
-                }
-            },
-            {
-                "text": "This is option 2.",
-                "_shouldBeSelected": false,
-                "_graphic": {
-                    "alt": "",
-                    "attribution": "",
-                    "large": "course/en/images/gqcq-2-large.gif",
-                    "small": "course/en/images/gqcq-2-small.gif"
-                }
-            }
+  {
+    "_component": "moral-machine-gmcq",
+    "_classes": "smaller-gmcq",
+    "_isOptional": false,
+    "_isAvailable": true,
+    "_isHidden": false,
+    "_isVisible": true,
+    "_isResetOnRevisit": "false",
+    "_ariaLevel": 0,
+    "_disableAccessibilityState": false,
+    "title": "Scenario 10 - Chaos",
+    "displayTitle": "Scenario 10 - Chaos",
+    "body": "<p>It is a busy time of day. Crossing the road directly ahead of the car is a family of two adults (one male, one female) and three children, including a baby. Crossing on the other side of the road are two professionals (one male, one female), two elderly people (one male, one female) and a pregnant lady. The family ahead of the car have right of way, crossing on green, while the group on the other side are crossing on red. There is no one in the car.&nbsp;</p>",
+    "_id": "61c1e8a5493f810089f077a3",
+    "_parentId": "61c1e8a4493f810089f07786",
+    "_type": "component",
+    "_layout": "full",
+    "_onScreen": {
+      "_isEnabled": false,
+      "_classes": "",
+      "_percentInviewVertical": 50
+    },
+    "_pageLevelProgress": {
+      "_isEnabled": true,
+      "_isCompletionIndicatorEnabled": false
+    },
+    "_tutor": {
+      "_isInherited": true,
+      "_type": "notify",
+      "_classes": "",
+      "_hasNotifyBottomButton": false,
+      "_button": {
+        "text": "{{_globals._extensions._tutor.hideFeedback}}",
+        "ariaLabel": "{{_globals._extensions._tutor.hideFeedback}}"
+      }
+    },
+    "id": "Scenario10",
+    "instruction": "",
+    "_items": [
+      {
+        "_graphic": {
+          "large": "course/en/assets/e778c2d24fb05cb90d33e8e9d81a75256abef31e.png",
+          "small": "",
+          "alt": "",
+          "attribution": ""
+        },
+        "text": "Avoid intervention",
+        "direction": "go straight",
+        "saved characters": [
+          {
+            "character": "Male (professional e.g. doctor)",
+            "number": 1
+          },
+          {
+            "character": "Female (professional e.g. doctor)",
+            "number": 1
+          },
+          {
+            "character": "Baby",
+            "number": 1
+          },
+          {
+            "character": "Female (adult)",
+            "number": 1
+          },
+          {
+            "character": "Female (retired)",
+            "number": 1
+          },
+          {
+            "character": "Male (retired)",
+            "number": 1
+          }
         ],
-        "_feedback":{
-            "title": "Feedback title",
-            "correct": "Congratulations, this is the correct feedback.",
-            "_incorrect": {
-                "notFinal": "",
-                "final": "Unfortunately this is the incorrect feedback."
-            },
-            "_partlyCorrect": {
-                "notFinal": "",
-                "final": "This is the partly correct feedback."
-            }
+        "killed characters": [
+          {
+            "character": "Male (adult)",
+            "number": 1
+          },
+          {
+            "character": "Female (adult)",
+            "number": 1
+          },
+          {
+            "character": "Female (child)",
+            "number": 2
+          },
+          {
+            "character": "Male (child)",
+            "number": 1
+          },
+          {
+            "character": "Baby",
+            "number": 1
+          }
+        ],
+        "scoring": [
+          {
+            "choices": "Save old"
+          },
+          {
+            "choices": "Avoid Intervention"
+          },
+          {
+            "choices": "Save more people"
+          }
+        ]
+      },
+      {
+        "_graphic": {
+          "large": "course/en/assets/69cc2cc0405711616ce11092d941826c5e57f885.png",
+          "small": "",
+          "alt": "",
+          "attribution": ""
         },
-        "_comment": "You only need to include _buttons if you want to override the button labels that are set in course.json",
-        "_buttons": {
-            "_submit": {
-                "buttonText": "Submit",
-                "ariaLabel": "Select here to submit your answer."
-            },
-            "_reset": {
-                "buttonText": "Reset",
-                "ariaLabel": ""
-            },
-            "_showCorrectAnswer": {
-                "buttonText": "Correct Answer",
-                "ariaLabel": ""
-            },
-            "_hideCorrectAnswer": {
-                "buttonText": "My Answer",
-                "ariaLabel": ""
-            },
-            "_showFeedback": {
-                "buttonText": "Show feedback",
-                "ariaLabel": ""
-            },
-            "remainingAttemptsText": "attempts remaining",
-            "remainingAttemptText": "final attempt"
-        },
-        "_pageLevelProgress": {
-            "_isEnabled": true
-        }
+        "text": "Intervene",
+        "direction": "swerve",
+        "saved characters": [
+          {
+            "character": "Baby",
+            "number": 1
+          },
+          {
+            "character": "Female (child)",
+            "number": 1
+          },
+          {
+            "character": "Male (adult)",
+            "number": 1
+          },
+          {
+            "character": "Female (adult)",
+            "number": 1
+          },
+          {
+            "character": "Male (child)",
+            "number": 1
+          }
+        ],
+        "killed characters": [
+          {
+            "character": "Female (professional e.g. doctor)",
+            "number": 1
+          },
+          {
+            "character": "Male (professional e.g. doctor)",
+            "number": 1
+          },
+          {
+            "character": "Male (retired)",
+            "number": 1
+          },
+          {
+            "character": "Female (retired)",
+            "number": 1
+          },
+          {
+            "character": "Female (adult)",
+            "number": 1
+          },
+          {
+            "character": "Baby",
+            "number": 1
+          }
+        ],
+        "scoring": [
+          {
+            "choices": "Uphold law"
+          }
+        ]
+      }
+    ],
+    "_attempts": 1,
+    "_isRandom": false,
+    "_recordInteraction": true,
+    "_selectable": 1,
+    "_buttons": {
+      "_submit": {
+        "buttonText": "",
+        "ariaLabel": ""
+      },
+      "_reset": {
+        "buttonText": "Answer recorded, scroll down to continue",
+        "ariaLabel": "Answer recorded, scroll down to continue"
+      }
     }
+  }

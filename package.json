@@ -1,20 +1,21 @@
 {
-  "name": "adapt-contrib-gmcq",
-  "version": "6.0.1",
+  "name": "odi-moralMachine-gmcq",
+  "version": "7.2.1-1",
   "framework": ">=5.14.0",
-  "homepage": "https://github.com/adaptlearning/adapt-contrib-gmcq",
-  "bugs": "https://github.com/adaptlearning/adapt-contrib-gmcq/issues",
-  "component" : "gmcq",
-  "targetAttribute": "_gmcq",
-  "displayName" : "Graphical Multiple Choice Question",
-  "description": "A multiple choice question component, with images",
-  "main": "/js/adapt-contrib-gmcq.js",
+  "homepage": "https://github.com/theodi/odi-moralMachine-gmcq",
+  "bugs": "https://github.com/theodi/odi-moralMachine-gmcqissues",
+  "component" : "moral-machine-gmcq",
+  "targetAttribute": "_moral-machine-gmcq",
+  "displayName" : "Moral Machine (based upon Graphical Multiple Choice Question)",
+  "description": "Moral Machine (as a multiple choice question component, with images)",
+  "main": "/js/odi-moralMachine-gmcq.js",
   "keywords": [
     "adapt-plugin",
     "adapt-component"
   ],
   "pluginDependencies": {
-    "adapt-contrib-mcq": ">=4"
+    "adapt-contrib-mcq": ">=4",
+    "adapt-contrib-gmcq": ">=7.2.1"
   },
   "license": "GPL-3.0"
 }

@@ -1,14 +1,14 @@
 {
-  "name": "odi-mit-moral-machine-gmcq",
+  "name": "odi-moralMachine-gmcq",
   "version": "7.2.1-1",
   "framework": ">=5.14.0",
-  "homepage": "https://github.com/theodi/odi-mit-moral-machine-gmcq",
-  "bugs": "https://github.com/theodi/odi-mit-moral-machine-gmcq/issues",
+  "homepage": "https://github.com/theodi/odi-moralMachine-gmcq",
+  "bugs": "https://github.com/theodi/odi-moralMachine-gmcqissues",
   "component" : "moral-machine-gmcq",
   "targetAttribute": "_moral-machine-gmcq",
   "displayName" : "Moral Machine (based upon Graphical Multiple Choice Question)",
   "description": "Moral Machine (as a multiple choice question component, with images)",
-  "main": "/js/odi-mit-moral-machine-gmcq.js",
+  "main": "/js/odi-moralMachine-gmcq.js",
   "keywords": [
     "adapt-plugin",
     "adapt-component"
