@@ -350,7 +350,7 @@
     "_canShowFeedback": {
       "type": "boolean",
       "required": true,
-      "default": true,
+      "default": false,
       "title": "Display Feedback",
       "inputType": "Checkbox",
       "validators": []
